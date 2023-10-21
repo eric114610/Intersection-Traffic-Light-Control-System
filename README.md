@@ -36,7 +36,7 @@ If the action agent selected is different from the original action, there will b
 ### Reward
 Change in *cumulative waiting time* for all the cars in incoming lanes between actions.
 The *cunulative waiting time* for each car isn't linear.
-Suppose that a car spent t seconds with speed=0 since the spawn, its *cunulative waiting time* will be int(log(t+1)*10)
+Suppose that a car spent t seconds with speed=0 since the spawn, its *cumulative waiting time* will be int(log(t+1)*10)
 
 ### Learning Machanism
 We implemented Deep Q-learning to train the model. 
