@@ -1,3 +1,1 @@
-current best for envr2, 13975 <- total waiting for seed 1000 , for 5400 steps and 1500 cars
-still need to handle corner case (fixed using simulation 7,9)
-best for all situation
+Best for envr2 w/o bus & truck, 13975 <- total waiting for seed 1000 , for 5400 steps and 1500 cars

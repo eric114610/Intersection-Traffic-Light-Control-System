@@ -37,6 +37,8 @@ class Simulation:
         self._old_flow = 0
         self._current_flow = 0
         self._lanes = lanes
+        self._isyellow = False
+        self._action = -1
 
 
     def run(self, car_queue):
@@ -66,7 +68,8 @@ class Simulation:
                 self._step += 1
                 return 0
             # get current state of the intersection
-            current_state, self._current_flow = self._get_state(self._old_action, car_queue)
+            if not self._isyellow:
+                current_state, self._current_flow = self._get_state(self._old_action, car_queue)
 
 
             # idea: use prev action to see 車流量 in moving lane and combine with waiting lane's number
@@ -79,19 +82,23 @@ class Simulation:
             #reward = old_total_wait - current_total_wait
 
             # choose the light phase to activate, based on the current state of the intersection
-            action = self._choose_action(current_state, self._current_flow, self._old_flow, self._old_action, car_queue)
+                self._action = self._choose_action(current_state, self._current_flow, self._old_flow, self._old_action, car_queue)
 
             # if the chosen phase is different from the last phase, activate the yellow phase
-            if self._step != 0 and self._old_action != action:
-                self._set_yellow_phase(self._old_action)
-                self._simulate(self._yellow_duration)
+                if self._step != 0 and self._old_action != self._action:
+                    self._set_yellow_phase(self._old_action)
+                    self._simulate(self._yellow_duration)
+                    self._isyellow = True
+                    return 0
 
             # execute the phase selected before
-            self._set_green_phase(action)
+            if self._isyellow:
+                self._isyellow = False
+            self._set_green_phase(self._action)
             self._simulate(self._green_duration)
 
             # saving variables for later & accumulate reward
-            self._old_action = action
+            self._old_action = self._action
             #old_total_wait = current_total_wait
             self._old_flow = self._current_flow
             self._step += 1
