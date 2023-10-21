@@ -26,6 +26,13 @@ let database = getDatabase(app);
 
 
 function Case() {
+    const [testSet] = useState([
+      {abc:{id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+      bcd:{id: 2, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+      aaa:{id: 3, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+      bbb:{id: 4, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+      ccc:{id: 5, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"}},
+  ])
     const [CaseSet, setCaseSet] = useState([
         {id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
         {id: 2, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.11.12"},
@@ -55,6 +62,15 @@ function Case() {
     useEffect(() => {
         console.log(CaseSet);
     }, [CaseSet])  
+
+    var transformedArray = [];
+    let dataObject = testSet[0];
+    for (var key in dataObject) {
+        if (dataObject.hasOwnProperty(key)) {
+          transformedArray.push(dataObject[key]);
+        }
+      }
+
   //getData();
   //console.log(dataStorage);    
   let location = useLocation();
@@ -62,7 +78,7 @@ function Case() {
   let index = params.index;
 
   
-  const foundData = CaseSet.find(item=>item.id==index)
+  const foundData = transformedArray.find(item=>item.id==index)
 
   if (foundData) {
     console.log(foundData);
