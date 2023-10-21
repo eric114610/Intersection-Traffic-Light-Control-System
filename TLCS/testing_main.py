@@ -105,3 +105,6 @@ if __name__ == "__main__":
         print(total_waiting_time/config['n_cars_generated'])
         f.write("\nTotal waiting time for fixed length traffic light " + str(sum(Simulation2._last_waiting)))
         f.write("\nAverage waiting time per car: " + str(sum(Simulation2._last_waiting)/config['n_cars_generated']) + "\n\n")
+
+        Visualization1.save_data_and_plot2(data=Simulation1._last_waiting, data2=Simulation2._last_waiting, filename='waiting_time_for_car', xlabel='car', ylabel='seconds')
+        Visualization1.save_data_and_plot2(data=Simulation1.queue_length_episode, data2=Simulation2.queue_length_episode, filename='accumulated_waiting_time_for_queue', xlabel='Step', ylabel='seconds')
