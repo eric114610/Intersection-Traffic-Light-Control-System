@@ -19,6 +19,8 @@ var app = initializeApp(firebaseConfig);
 // const auth = getAuth();
 let database = getDatabase(app);
 
+const Ref = ref(database, 'events');
+
 
 function Func1page() {
     //getData();
@@ -46,7 +48,7 @@ function Func1page() {
     const fetchData = async() => {
         let newCaseSet=[];
 
-        onValue(ref(database), (snapshot) => {
+        onValue(Ref, (snapshot) => {
             newCaseSet.length = 0; 
             snapshot.forEach((item) => {
               newCaseSet.push(item.val()); 
@@ -58,28 +60,29 @@ function Func1page() {
     }
 
     useEffect(() => {
-        //console.log(CaseSet);
+        console.log(CaseSet);
     }, [CaseSet])
 
+    /*
     var transformedArray = [];
-    let dataObject = testSet[0];
+    let dataObject = CaseSet[0];
     for (var key in dataObject) {
         if (dataObject.hasOwnProperty(key)) {
           transformedArray.push(dataObject[key]);
         }
       }
 
-    console.log(testSet);
+    //console.log(testSet);
     console.log(transformedArray);
 
     //const reversed_CaseSet = CaseSet.reverse();
-    
+    */
     return (
 
         <div className='func1Page'>
             <div className='title'>違規車輛取締</div>
             {
-                transformedArray.map(ca =>
+                CaseSet.map(ca =>
                     <div>
                         <a className="card" key={ca.id} type="button" href={"/case?index=" + ca.id}>
                             <p className="card-text">{ca.time}</p>

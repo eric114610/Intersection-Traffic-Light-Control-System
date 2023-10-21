@@ -23,7 +23,7 @@ var app = initializeApp(firebaseConfig);
 // const auth = getAuth();
 let database = getDatabase(app);
 
-
+const Ref = ref(database, 'events');
 
 function Case() {
     const [testSet] = useState([
@@ -48,7 +48,7 @@ function Case() {
     const fetchData = async() => {
         let newCaseSet=[];
 
-        onValue(ref(database), (snapshot) => {
+        onValue(Ref, (snapshot) => {
             newCaseSet.length = 0; 
             snapshot.forEach((item) => {
               newCaseSet.push(item.val()); 
@@ -62,7 +62,7 @@ function Case() {
     useEffect(() => {
         console.log(CaseSet);
     }, [CaseSet])  
-
+/*
     var transformedArray = [];
     let dataObject = testSet[0];
     for (var key in dataObject) {
@@ -70,7 +70,7 @@ function Case() {
           transformedArray.push(dataObject[key]);
         }
       }
-
+*/
   //getData();
   //console.log(dataStorage);    
   let location = useLocation();
@@ -78,7 +78,7 @@ function Case() {
   let index = params.index;
 
   
-  const foundData = transformedArray.find(item=>item.id==index)
+  const foundData = CaseSet.find(item=>item.id==index)
 
   if (foundData) {
     console.log(foundData);
