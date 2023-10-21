@@ -48,6 +48,8 @@ class Simulation:
         self._waiting_times = {}
         old_total_wait = 0
         old_action = -1 # dummy init
+        self._last_waiting = []
+        self._queue_length_episode = []
 
         old_flow=0
         current_flow=0
@@ -56,11 +58,6 @@ class Simulation:
 
             # get current state of the intersection
             current_state, current_flow = self._get_state(old_action)
-
-
-            # idea: use prev action to see 車流量 in moving lane and combine with waiting lane's number
-            # to create state.
-
 
             # calculate reward of previous action: (change in cumulative waiting time between actions)
             # waiting time = seconds waited by a car since the spawn in the environment, cumulated for every car in incoming lanes
@@ -86,7 +83,6 @@ class Simulation:
 
             self._reward_episode.append(reward)
 
-        #print("Total reward:", np.sum(self._reward_episode))
         car_list = traci.vehicle.getIDList()
         total_waiting_time=0
         for car_id in car_list:
@@ -227,27 +223,6 @@ class Simulation:
             lane_pos = 750 - lane_pos  # inversion of lane pos, so if the car is close to the traffic light -> lane_pos = 0 --- 750 = max len of a road
 
             
-            # distance in meters from the traffic light -> mapping into cells
-            # if lane_pos < 7:
-            #     lane_cell = 0
-            # elif lane_pos < 14:
-            #     lane_cell = 1
-            # elif lane_pos < 21:
-            #     lane_cell = 2
-            # elif lane_pos < 28:
-            #     lane_cell = 3
-            # elif lane_pos < 40:
-            #     lane_cell = 4
-            # elif lane_pos < 60:
-            #     lane_cell = 5
-            # elif lane_pos < 100:
-            #     lane_cell = 6
-            # elif lane_pos < 160:
-            #     lane_cell = 7
-            # elif lane_pos < 400:
-            #     lane_cell = 8
-            # elif lane_pos <= 750:
-            #     lane_cell = 9
             if lane_pos < 0:
                 lane_cell = 9
             elif lane_pos < 7:
@@ -271,38 +246,6 @@ class Simulation:
             elif lane_pos <= 750:
                 lane_cell = 9
 
-            # finding the lane where the car is located 
-            # x2TL_3 are the "turn left only" lanes
-            # if lane_id == "W2TL_0" or lane_id == "W2TL_1" or lane_id == "W2TL_2":
-            #     lane_group = 0
-            # elif lane_id == "W2TL_3":
-            #     lane_group = 1
-            # elif lane_id == "N2TL_0" or lane_id == "N2TL_1" or lane_id == "N2TL_2":
-            #     lane_group = 2
-            # elif lane_id == "N2TL_3":
-            #     lane_group = 3
-            # elif lane_id == "E2TL_0" or lane_id == "E2TL_1" or lane_id == "E2TL_2":
-            #     lane_group = 4
-            # elif lane_id == "E2TL_3":
-            #     lane_group = 5
-            # elif lane_id == "S2TL_0" or lane_id == "S2TL_1" or lane_id == "S2TL_2":
-            #     lane_group = 6
-            # elif lane_id == "S2TL_3":
-            #     lane_group = 7
-            # else:
-            #     lane_group = -1
-
-            # if lane_group >= 1 and lane_group <= 7:
-            #     car_position = int(str(lane_group) + str(lane_cell))  # composition of the two postion ID to create a number in interval 0-79
-            #     valid_car = True
-            # elif lane_group == 0:
-            #     car_position = lane_cell
-            #     valid_car = True
-            # else:
-            #     valid_car = False  # flag for not detecting cars crossing the intersection or driving away from it
-
-            # if valid_car:
-            #     state[car_position] = 1  # write the position of the car car_id in the state array in the form of "cell occupied"
 
             car_type = 0
             car_vclass = traci.vehicle.getVehicleClass(car_id)

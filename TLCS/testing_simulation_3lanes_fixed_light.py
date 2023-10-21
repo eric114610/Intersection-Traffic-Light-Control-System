@@ -47,6 +47,8 @@ class Simulation:
         self._waiting_times = {}
         old_total_wait = 0
         old_action = -1 # dummy init
+        self._last_waiting = []
+        self._queue_length_episode = []
 
         while self._step < self._max_steps:
 
@@ -58,16 +60,6 @@ class Simulation:
             current_total_wait = self._collect_waiting_times()
             reward = old_total_wait - current_total_wait
 
-            # choose the light phase to activate, based on the current state of the intersection
-            # action = 0
-            # if self._step % 80 < 30:
-            #     action = 0
-            # elif self._step % 80 < 40:
-            #     action = 1
-            # elif self._step % 80 < 70:
-            #     action = 2
-            # elif self._step % 80 < 80:
-            #     action = 3
             action = self._choose_action(current_state, emer_n, emer_e, emer_w, emer_s)
 
             # if the chosen phase is different from the last phase, activate the yellow phase
@@ -85,7 +77,6 @@ class Simulation:
 
             self._reward_episode.append(reward)
 
-        #print("Total reward:", np.sum(self._reward_episode))
         car_list = traci.vehicle.getIDList()
         total_waiting_time=0
         for car_id in car_list:
@@ -147,13 +138,6 @@ class Simulation:
             action = 2
         elif self._step % 100 < 100:
             action = 3
-
-        if emer_n or emer_s:
-            action = 0
-            print("Emergency")
-        elif emer_e or emer_w:
-            action = 2
-            print("Emergency")
         
         return action
 

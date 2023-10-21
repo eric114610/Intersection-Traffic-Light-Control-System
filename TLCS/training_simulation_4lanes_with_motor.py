@@ -15,7 +15,6 @@ PHASE_EW_YELLOW = 5
 PHASE_EWL_GREEN = 6  # action 3 code 11
 PHASE_EWL_YELLOW = 7
 
-#current best for envr2,3 w/ bus & truck, still worse than w/o bus & truck
 
 class Simulation:
     def __init__(self, Model, Memory, TrafficGen, sumo_cmd, gamma, max_steps, green_duration, yellow_duration, num_states, num_actions, training_epochs):
@@ -195,30 +194,8 @@ class Simulation:
         for car_id in car_list:
             lane_pos = traci.vehicle.getLanePosition(car_id)
             lane_id = traci.vehicle.getLaneID(car_id)
-            #lane_pos = 750 - lane_pos  # inversion of lane pos, so if the car is close to the traffic light -> lane_pos = 0 --- 750 = max len of a road
             lane_pos = 750 - lane_pos
 
-            # distance in meters from the traffic light -> mapping into cells
-            # if lane_pos < 7:
-            #     lane_cell = 0
-            # elif lane_pos < 14:
-            #     lane_cell = 1
-            # elif lane_pos < 21:
-            #     lane_cell = 2
-            # elif lane_pos < 28:
-            #     lane_cell = 3
-            # elif lane_pos < 40:
-            #     lane_cell = 4
-            # elif lane_pos < 60:
-            #     lane_cell = 5
-            # elif lane_pos < 100:
-            #     lane_cell = 6
-            # elif lane_pos < 160:
-            #     lane_cell = 7
-            # elif lane_pos < 400:
-            #     lane_cell = 8
-            # elif lane_pos <= 750:
-            #     lane_cell = 9
             if lane_pos < 0:
                 lane_cell = 9
             elif lane_pos < 7:
@@ -242,38 +219,7 @@ class Simulation:
             elif lane_pos <= 750:
                 lane_cell = 9
 
-            # finding the lane where the car is located 
-            # x2TL_3 are the "turn left only" lanes
-            # if lane_id == "W2TL_0" or lane_id == "W2TL_1" or lane_id == "W2TL_2":
-            #     lane_group = 0
-            # elif lane_id == "W2TL_3":
-            #     lane_group = 1
-            # elif lane_id == "N2TL_0" or lane_id == "N2TL_1" or lane_id == "N2TL_2":
-            #     lane_group = 2
-            # elif lane_id == "N2TL_3":
-            #     lane_group = 3
-            # elif lane_id == "E2TL_0" or lane_id == "E2TL_1" or lane_id == "E2TL_2":
-            #     lane_group = 4
-            # elif lane_id == "E2TL_3":
-            #     lane_group = 5
-            # elif lane_id == "S2TL_0" or lane_id == "S2TL_1" or lane_id == "S2TL_2":
-            #     lane_group = 6
-            # elif lane_id == "S2TL_3":
-            #     lane_group = 7
-            # else:
-            #     lane_group = -1
 
-            # if lane_group >= 1 and lane_group <= 7:
-            #     car_position = int(str(lane_group) + str(lane_cell))  # composition of the two postion ID to create a number in interval 0-79
-            #     valid_car = True
-            # elif lane_group == 0:
-            #     car_position = lane_cell
-            #     valid_car = True
-            # else:
-            #     valid_car = False  # flag for not detecting cars crossing the intersection or driving away from it
-
-            # if valid_car:
-            #     state[car_position] = 1  # write the position of the car car_id in the state array in the form of "cell occupied"
             car_type = 0
             car_vclass = traci.vehicle.getVehicleClass(car_id)
             if car_vclass == "truck":
@@ -386,7 +332,6 @@ class Simulation:
             for i, b in enumerate(batch):
                 state, action, reward, _ = b[0], b[1], b[2], b[3]  # extract data from one sample
                 current_q = q_s_a[i]  # get the Q(state) predicted before
-                #current_q[action] = reward + self._gamma * np.amax(q_s_a_d[i])  # update Q(state, action)
                 current_q[action] = q_s_a[i][action] + self._gamma * (reward + self._gamma * np.amax(q_s_a_d[i]) - q_s_a[i][action])
                 x[i] = state
                 y[i] = current_q  # Q(state) that includes the updated action value

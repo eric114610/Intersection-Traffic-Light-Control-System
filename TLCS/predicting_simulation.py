@@ -18,7 +18,7 @@ PHASE_EWL_YELLOW = 7
 # need to pass in flow and waiting queue
 
 class Simulation:
-    def __init__(self, Model, max_steps, green_duration, yellow_duration, num_states, num_actions):
+    def __init__(self, Model, max_steps, green_duration, yellow_duration, num_states, num_actions, lanes):
         self._Model = Model
         #self._TrafficGen = TrafficGen
         self._step = 0
@@ -36,6 +36,7 @@ class Simulation:
         self._old_action = -1
         self._old_flow = 0
         self._current_flow = 0
+        self._lanes = lanes
 
 
     def run(self, car_queue):
@@ -376,30 +377,56 @@ class Simulation:
         #     elif car_id.lane == "S_Turn":
         #         if lane_car[7] + car_type < 5:
         #             lane_car[7] += 1
-        lane_car[0] = car_queue.W_Straight._car + car_queue.W_Straight._bus*2 + car_queue.W_Straight._truck*1.5
-        if lane_car[0] >= 10:
-            lane_car[0] = 10
-        lane_car[1] = car_queue.W_Turn._car + car_queue.W_Turn._bus*2 + car_queue.W_Turn._truck*1.5
-        if lane_car[1] >= 5:
-            lane_car[1] = 5
-        lane_car[2] = car_queue.N_Straight._car + car_queue.N_Straight._bus*2 + car_queue.N_Straight._truck*1.5
-        if lane_car[2] >= 10:
-            lane_car[2] = 10
-        lane_car[3] = car_queue.N_Turn._car + car_queue.N_Turn._bus*2 + car_queue.N_Turn._truck*1.5
-        if lane_car[3] >= 5:
-            lane_car[3] = 5
-        lane_car[4] = car_queue.E_Straight._car + car_queue.E_Straight._bus*2 + car_queue.E_Straight._truck*1.5
-        if lane_car[4] >= 10:
-            lane_car[4] = 10
-        lane_car[5] = car_queue.E_Turn._car + car_queue.E_Turn._bus*2 + car_queue.E_Turn._truck*1.5
-        if lane_car[5] >= 5:
-            lane_car[5] = 5
-        lane_car[6] = car_queue.S_Straight._car + car_queue.S_Straight._bus*2 + car_queue.S_Straight._truck*1.5
-        if lane_car[6] >= 10:
-            lane_car[6] = 10
-        lane_car[7] = car_queue.S_Turn._car + car_queue.S_Turn._bus*2 + car_queue.S_Turn._truck*1.5
-        if lane_car[7] >= 5:
-            lane_car[7] = 5
+        if self._lanes == 3:
+            lane_car[0] = car_queue.W_Straight._car + car_queue.W_Straight._bus*2 + car_queue.W_Straight._truck*1.5
+            if lane_car[0] >= 10:
+                lane_car[0] = 10
+            lane_car[1] = car_queue.W_Turn._car + car_queue.W_Turn._bus*2 + car_queue.W_Turn._truck*1.5
+            if lane_car[1] >= 5:
+                lane_car[1] = 5
+            lane_car[2] = car_queue.N_Straight._car + car_queue.N_Straight._bus*2 + car_queue.N_Straight._truck*1.5
+            if lane_car[2] >= 10:
+                lane_car[2] = 10
+            lane_car[3] = car_queue.N_Turn._car + car_queue.N_Turn._bus*2 + car_queue.N_Turn._truck*1.5
+            if lane_car[3] >= 5:
+                lane_car[3] = 5
+            lane_car[4] = car_queue.E_Straight._car + car_queue.E_Straight._bus*2 + car_queue.E_Straight._truck*1.5
+            if lane_car[4] >= 10:
+                lane_car[4] = 10
+            lane_car[5] = car_queue.E_Turn._car + car_queue.E_Turn._bus*2 + car_queue.E_Turn._truck*1.5
+            if lane_car[5] >= 5:
+                lane_car[5] = 5
+            lane_car[6] = car_queue.S_Straight._car + car_queue.S_Straight._bus*2 + car_queue.S_Straight._truck*1.5
+            if lane_car[6] >= 10:
+                lane_car[6] = 10
+            lane_car[7] = car_queue.S_Turn._car + car_queue.S_Turn._bus*2 + car_queue.S_Turn._truck*1.5
+            if lane_car[7] >= 5:
+                lane_car[7] = 5
+        else:
+            lane_car[0] = car_queue.W_Straight._car + car_queue.W_Straight._bus*2 + car_queue.W_Straight._truck*1.5
+            if lane_car[0] >= 15:
+                lane_car[0] = 15
+            lane_car[1] = car_queue.W_Turn._car + car_queue.W_Turn._bus*2 + car_queue.W_Turn._truck*1.5
+            if lane_car[1] >= 5:
+                lane_car[1] = 5
+            lane_car[2] = car_queue.N_Straight._car + car_queue.N_Straight._bus*2 + car_queue.N_Straight._truck*1.5
+            if lane_car[2] >= 15:
+                lane_car[2] = 15
+            lane_car[3] = car_queue.N_Turn._car + car_queue.N_Turn._bus*2 + car_queue.N_Turn._truck*1.5
+            if lane_car[3] >= 5:
+                lane_car[3] = 5
+            lane_car[4] = car_queue.E_Straight._car + car_queue.E_Straight._bus*2 + car_queue.E_Straight._truck*1.5
+            if lane_car[4] >= 15:
+                lane_car[4] = 15
+            lane_car[5] = car_queue.E_Turn._car + car_queue.E_Turn._bus*2 + car_queue.E_Turn._truck*1.5
+            if lane_car[5] >= 5:
+                lane_car[5] = 5
+            lane_car[6] = car_queue.S_Straight._car + car_queue.S_Straight._bus*2 + car_queue.S_Straight._truck*1.5
+            if lane_car[6] >= 15:
+                lane_car[6] = 15
+            lane_car[7] = car_queue.S_Turn._car + car_queue.S_Turn._bus*2 + car_queue.S_Turn._truck*1.5
+            if lane_car[7] >= 5:
+                lane_car[7] = 5
         
         flow_count=0
         total_flow=0
@@ -424,11 +451,22 @@ class Simulation:
             state[11] = flow_count
             total_flow += flow_count
 
-        for i in range(8):
-            total_s = 0
-            for j in range(int(lane_car[i])):
-                total_s += -(j+1)*(j+1)*(j+1)*0.02 + 20
-            state[i] = total_s
+        if self._lanes == 3:
+            for i in range(8):
+                total_s = 0
+                for j in range(int(lane_car[i])):
+                    total_s += -(j+1)*(j+1)*(j+1)*0.02 + 20
+                state[i] = total_s
+        else:
+            for i in range(8):
+                total_s = 0
+                if i%2==0:
+                    for j in range(int(lane_car[i])):
+                        total_s += -(j+1)*(j+1)*(j+1)*0.006 + 20
+                else:
+                    total_s = lane_car[i]
+                state[i] = total_s
+
 
         return state, total_flow
 
