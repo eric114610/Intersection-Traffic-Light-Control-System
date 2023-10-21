@@ -454,8 +454,11 @@ class Simulation:
         if self._lanes == 3:
             for i in range(8):
                 total_s = 0
-                for j in range(int(lane_car[i])):
-                    total_s += -(j+1)*(j+1)*(j+1)*0.02 + 20
+                if i%2==0:
+                    for j in range(int(lane_car[i])):
+                        total_s += -(j+1)*(j+1)*(j+1)*0.006 + 20
+                else:
+                    total_s = lane_car[i]
                 state[i] = total_s
         else:
             for i in range(8):
