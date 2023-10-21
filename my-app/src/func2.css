@@ -1,0 +1,28 @@
+.func2Page{
+    background-color: #bbbbbb;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+}
+
+.title{
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 10vh;
+}
+
+.content{
+    font-size: 24px;
+}
+
+.situation{
+    font-size: 24px;
+    text-align: center;
+}
