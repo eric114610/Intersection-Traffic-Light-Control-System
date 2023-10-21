@@ -5,12 +5,12 @@ import os
 from shutil import copyfile
 import numpy as np
 
-from testing_simulation_3lanes_all_car import Simulation
+from testing_simulation_4lanes_all_car import Simulation
 from generator import TrafficGenerator
 from model import TestModel
 from visualization import Visualization
 from utils import import_test_configuration, set_sumo, set_test_path
-from testing_simulation_3lanes_fixed_light import Simulation as Simulation22
+from testing_simulation_4lanes_fixed_light import Simulation as Simulation22
 
 
 if __name__ == "__main__":
