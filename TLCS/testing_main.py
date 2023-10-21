@@ -70,8 +70,8 @@ if __name__ == "__main__":
     mo = config['model_to_test']
     f.write("Model%d:\n" %mo)
 
-    for i in range(5):
-        seed = np.random.randint(1,100000)
+    for i in range(1):
+        seed = 1000#np.random.randint(1,100000)
         f.write("testing seed %d" % seed)
         print('\n----- Test episode1 with model')
         simulation_time, total_waiting_time = Simulation1.run(seed)  # run the simulation
