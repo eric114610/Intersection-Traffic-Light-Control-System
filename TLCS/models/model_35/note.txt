@@ -1,0 +1,1 @@
+current beset for envr3 with correct training process. still worse than 20, 13645 for seed 1000

@@ -1,0 +1,5 @@
+original testing seed 10000
+
+current problem: may have overfit due to typo
+
+original system have defect when uncountered curtain testcase in 4 lanes

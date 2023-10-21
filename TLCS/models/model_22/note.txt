@@ -1,0 +1,1 @@
+envr1, current best, solved seed 1000 problem but minor decrease in efficiency
