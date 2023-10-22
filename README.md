@@ -1,4 +1,4 @@
-# Intersection-Traffic-Light-Control-System-With-Violation-Detection
+# Intersection-Traffic-Light-Control-System
 Project for 2023 Meichu Hackathon NXP Team 2
 
 Aim to automaticly decide traffic signal using computer vision and Deep Q-learning with camera footage at the intersection.

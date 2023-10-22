@@ -75,7 +75,7 @@ if __name__ == "__main__":
             config['yellow_duration'],
             config['num_states'],
             config['num_actions'],
-            4
+            3
         )
         Simulations.append(TmpSimulation)
 
@@ -99,7 +99,7 @@ if __name__ == "__main__":
             continue
         #print(car_q)
         car_queue = CarQueue(car_queue)
-        Simulations[5].run(car_queue)
+        Simulations[1].run(car_queue)
         print("1 step")
         end_time = time.perf_counter()
         elapsed_time = end_time - start_time
