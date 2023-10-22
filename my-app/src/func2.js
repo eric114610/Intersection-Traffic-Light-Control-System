@@ -21,6 +21,7 @@ var app = initializeApp(firebaseConfig);
 let database = getDatabase(app);
 
 const Ref = ref(database, 'light');
+const Ref1 = ref(database, 'test_sumo_light');
 
 
 function Func2page(){
@@ -41,6 +42,13 @@ function Func2page(){
 
     ])
 
+    const [lightSet, setlightSet] = useState([
+        //{id: 1, straightSignal: "red", lateralSignal: "green", time:"2023-09-22-10:22:30"},
+        //{id: 2, straightSignal: "red", lateralSignal: "green", time:"2023-09-22-10:22:40"},
+        //{id: 3, straightSignal: "red", lateralSignal: "green", time:"2023-09-22-10:22:40"},
+
+    ])
+
     useEffect(() => {
         fetchData(); // 初始
     
@@ -54,6 +62,7 @@ function Func2page(){
 
     const fetchData = async() => {
         let newSatusSet=[];
+        let newlightSet=[];
 
         onValue(Ref, (snapshot) => {
             newSatusSet.length = 0; 
@@ -61,7 +70,15 @@ function Func2page(){
               newSatusSet.push(item.val()); 
             });
             setStatusSet(newSatusSet);
-        });    
+        });
+        
+        onValue(Ref1, (snapshot) => {
+            newlightSet.length = 0; 
+            snapshot.forEach((item) => {
+              newlightSet.push(item.val()); 
+            });
+            setlightSet(newlightSet);
+        });  
     }
 
 
@@ -69,16 +86,22 @@ function Func2page(){
         console.log(StatusSet);
     }, [StatusSet])
 
+    useEffect(() => {
+        console.log(lightSet);
+    }, [lightSet])
 
 
 
-
+    let light = lightSet[0];
+    console.log(light);
     
     
         
     return(
         <div className='func2Page'>
           <div className='title'><h1>紅燈秒數調整</h1></div>
+          <div>{light}</div>
+          
             <table>
                 <thead>
                     <tr className='headrow'>
