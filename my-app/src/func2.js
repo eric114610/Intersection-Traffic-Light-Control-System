@@ -54,7 +54,7 @@ function Func2page(){
     
         const intervalId = setInterval(() => {
             fetchData(); 
-        }, 10000);
+        }, 1000);
     
         
         return () => clearInterval(intervalId);
