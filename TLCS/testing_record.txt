@@ -153,3 +153,186 @@ Average waiting time per car: 7.015333333333333
 Total waiting time for fixed length traffic light 30101.0
 Average waiting time per car: 20.067333333333334
 
+Model34:
+testing seed 73341
+Total waiting time for model 17448.0
+Average waiting time per car: 11.632
+Total waiting time for fixed length traffic light 37027.0
+Average waiting time per car: 24.684666666666665
+
+testing seed 95480
+Total waiting time for model 18237.0
+Average waiting time per car: 12.158
+Total waiting time for fixed length traffic light 35946.0
+Average waiting time per car: 23.964
+
+testing seed 2634
+Total waiting time for model 18427.0
+Average waiting time per car: 12.284666666666666
+Total waiting time for fixed length traffic light 34399.0
+Average waiting time per car: 22.932666666666666
+
+testing seed 61631
+Total waiting time for model 18254.0
+Average waiting time per car: 12.169333333333332
+Total waiting time for fixed length traffic light 36481.0
+Average waiting time per car: 24.320666666666668
+
+testing seed 48289
+Total waiting time for model 18118.0
+Average waiting time per car: 12.078666666666667
+Total waiting time for fixed length traffic light 38039.0
+Average waiting time per car: 25.359333333333332
+
+testing seed 39572
+Total waiting time for model 18244.0
+Average waiting time per car: 12.162666666666667
+Total waiting time for fixed length traffic light 38211.0
+Average waiting time per car: 25.474
+
+testing seed 27950
+Total waiting time for model 19357.0
+Average waiting time per car: 12.904666666666667
+Total waiting time for fixed length traffic light 36938.0
+Average waiting time per car: 24.625333333333334
+
+testing seed 46743
+Total waiting time for model 17478.0
+Average waiting time per car: 11.652
+Total waiting time for fixed length traffic light 37211.0
+Average waiting time per car: 24.807333333333332
+
+testing seed 52123
+Total waiting time for model 23778.0
+Average waiting time per car: 15.852
+Total waiting time for fixed length traffic light 38980.0
+Average waiting time per car: 25.986666666666668
+
+testing seed 10825
+Total waiting time for model 18704.0
+Average waiting time per car: 12.469333333333333
+Total waiting time for fixed length traffic light 37974.0
+Average waiting time per car: 25.316
+
+Model32:
+testing seed 88959
+Total waiting time for model 7244.0
+Average waiting time per car: 4.8293333333333335
+Total waiting time for fixed length traffic light 33244.0
+Average waiting time per car: 22.162666666666667
+
+testing seed 9953
+Total waiting time for model 6420.0
+Average waiting time per car: 4.28
+Total waiting time for fixed length traffic light 33918.0
+Average waiting time per car: 22.612
+
+testing seed 6883
+Total waiting time for model 8350.0
+Average waiting time per car: 5.566666666666666
+Total waiting time for fixed length traffic light 34172.0
+Average waiting time per car: 22.781333333333333
+
+testing seed 20464
+Total waiting time for model 6240.0
+Average waiting time per car: 4.16
+Total waiting time for fixed length traffic light 32798.0
+Average waiting time per car: 21.865333333333332
+
+testing seed 71381
+Total waiting time for model 6016.0
+Average waiting time per car: 4.010666666666666
+Total waiting time for fixed length traffic light 31826.0
+Average waiting time per car: 21.217333333333332
+
+testing seed 74767
+Total waiting time for model 6691.0
+Average waiting time per car: 4.460666666666667
+Total waiting time for fixed length traffic light 32647.0
+Average waiting time per car: 21.764666666666667
+
+testing seed 19317
+Total waiting time for model 6340.0
+Average waiting time per car: 4.226666666666667
+Total waiting time for fixed length traffic light 32658.0
+Average waiting time per car: 21.772
+
+testing seed 29276
+Total waiting time for model 6516.0
+Average waiting time per car: 4.344
+Total waiting time for fixed length traffic light 32352.0
+Average waiting time per car: 21.568
+
+testing seed 89698
+Total waiting time for model 6671.0
+Average waiting time per car: 4.447333333333333
+Total waiting time for fixed length traffic light 31783.0
+Average waiting time per car: 21.188666666666666
+
+testing seed 37966
+Total waiting time for model 6534.0
+Average waiting time per car: 4.356
+Total waiting time for fixed length traffic light 30629.0
+Average waiting time per car: 20.419333333333334
+
+Model35:
+testing seed 56513
+Total waiting time for model 12496.0
+Average waiting time per car: 8.330666666666668
+Total waiting time for fixed length traffic light 32406.0
+Average waiting time per car: 21.604
+
+testing seed 31227
+Total waiting time for model 10623.0
+Average waiting time per car: 7.082
+Total waiting time for fixed length traffic light 33762.0
+Average waiting time per car: 22.508
+
+testing seed 22350
+Total waiting time for model 10140.0
+Average waiting time per car: 6.76
+Total waiting time for fixed length traffic light 31934.0
+Average waiting time per car: 21.28933333333333
+
+testing seed 9730
+Total waiting time for model 10854.0
+Average waiting time per car: 7.236
+Total waiting time for fixed length traffic light 35532.0
+Average waiting time per car: 23.688
+
+testing seed 97943
+Total waiting time for model 14309.0
+Average waiting time per car: 9.539333333333333
+Total waiting time for fixed length traffic light 34447.0
+Average waiting time per car: 22.964666666666666
+
+testing seed 20339
+Total waiting time for model 8895.0
+Average waiting time per car: 5.93
+Total waiting time for fixed length traffic light 33052.0
+Average waiting time per car: 22.034666666666666
+
+testing seed 33497
+Total waiting time for model 12724.0
+Average waiting time per car: 8.482666666666667
+Total waiting time for fixed length traffic light 32421.0
+Average waiting time per car: 21.614
+
+testing seed 52120
+Total waiting time for model 9413.0
+Average waiting time per car: 6.275333333333333
+Total waiting time for fixed length traffic light 30819.0
+Average waiting time per car: 20.546
+
+testing seed 5707
+Total waiting time for model 14552.0
+Average waiting time per car: 9.701333333333332
+Total waiting time for fixed length traffic light 34883.0
+Average waiting time per car: 23.255333333333333
+
+testing seed 96402
+Total waiting time for model 10559.0
+Average waiting time per car: 7.039333333333333
+Total waiting time for fixed length traffic light 32100.0
+Average waiting time per car: 21.4
+

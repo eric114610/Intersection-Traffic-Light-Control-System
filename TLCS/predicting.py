@@ -11,6 +11,8 @@ from model import PredictModel
 from visualization import Visualization
 from utils import import_predict_configuration, set_sumo, set_predict_path
 
+from firebase_get import firebase_Get
+
 class CarDistribute:
     def __init__(self, l):
         self._car = l[0]
@@ -38,10 +40,10 @@ if __name__ == "__main__":
 
     config = import_predict_configuration(config_file='predicting_settings.ini')
     #sumo_cmd = set_sumo(config['gui'], config['sumocfg_file_name'], config['max_steps'])
-    print(config['model_to_load'])
+    #print(config['model_to_load'])
 
     model_path, plot_path = set_predict_path(config['models_path_name'], config['model_to_load'], 'predicts')
-    print(model_path, plot_path)
+    #print(model_path, plot_path)
 
     Models = []
 
@@ -72,36 +74,37 @@ if __name__ == "__main__":
             config['green_duration'],
             config['yellow_duration'],
             config['num_states'],
-            config['num_actions']
+            config['num_actions'],
+            4
         )
         Simulations.append(TmpSimulation)
 
-    print(Models)
-    print("\n")
-    print(Simulations)
+    firebase_db = firebase_Get()
 
-    # print('\n----- Test episode')
-    # simulation_time, total_waiting_time = Simulation.run(config['episode_seed'])  # run the simulation
-    # print('Simulation time:', simulation_time, 's')
-
-    # print("----- Testing info saved at:", plot_path)
-
-    # copyfile(src='testing_settings.ini', dst=os.path.join(plot_path, 'testing_settings.ini'))
-
-    # Visualization.save_data_and_plot(data=Simulation._last_waiting, filename='reward', xlabel='Action step', ylabel='Reward')
-    # Visualization.save_data_and_plot(data=Simulation.queue_length_episode, filename='queue', xlabel='Step', ylabel='Queue lenght (vehicles)')
-    # print(sum(Simulation._last_waiting))
-    # print(total_waiting_time/config['n_cars_generated'])
     predict = True
+    first = True
     while predict:
-        car_queue = input()
-        print(car_queue)
+        start_time = time.perf_counter()
+
+        car_queue = firebase_db.get()
+        #print(car_queue)
         if car_queue == "Stop":
             predict = False
             continue
-        car_q = list(int(i) for i in car_queue.split(","))
+        #car_q = list(int(i) for i in car_queue.split(","))
+        #car_q = list(int(i) for i in car_queue.split(","))
+        if type(car_queue) != list:
+            print("End")
+            predict = False
+            continue
         #print(car_q)
-        car_queue = CarQueue(car_q)
-        Simulations[0].run(car_queue)
+        car_queue = CarQueue(car_queue)
+        Simulations[5].run(car_queue)
         print("1 step")
-        time.sleep(1)
+        end_time = time.perf_counter()
+        elapsed_time = end_time - start_time
+        print(elapsed_time)
+        if not first:
+            time.sleep(max(1-elapsed_time, 0))
+        
+        first = False
