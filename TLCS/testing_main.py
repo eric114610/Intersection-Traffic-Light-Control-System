@@ -70,8 +70,8 @@ if __name__ == "__main__":
     mo = config['model_to_test']
     f.write("Model%d:\n" %mo)
 
-    for i in range(1):
-        seed = 1000#np.random.randint(1,100000)
+    for i in range(10):
+        seed = np.random.randint(1,100000)
         f.write("testing seed %d" % seed)
         print('\n----- Test episode1 with model')
         simulation_time, total_waiting_time = Simulation1.run(seed)  # run the simulation
@@ -106,5 +106,5 @@ if __name__ == "__main__":
         f.write("\nTotal waiting time for fixed length traffic light " + str(sum(Simulation2._last_waiting)))
         f.write("\nAverage waiting time per car: " + str(sum(Simulation2._last_waiting)/config['n_cars_generated']) + "\n\n")
 
-        Visualization1.save_data_and_plot2(data=Simulation1._last_waiting, data2=Simulation2._last_waiting, filename='waiting_time_for_car', xlabel='car', ylabel='seconds')
-        Visualization1.save_data_and_plot2(data=Simulation1.queue_length_episode, data2=Simulation2.queue_length_episode, filename='accumulated_waiting_time_for_queue', xlabel='Step', ylabel='seconds')
+        #Visualization1.save_data_and_plot2(data=Simulation1._last_waiting, data2=Simulation2._last_waiting, filename='waiting_time_for_car', xlabel='car', ylabel='seconds')
+        #Visualization1.save_data_and_plot2(data=Simulation1.queue_length_episode, data2=Simulation2.queue_length_episode, filename='accumulated_waiting_time_for_queue', xlabel='Step', ylabel='seconds')
