@@ -35,13 +35,32 @@
   left: 0;
   z-index: -1;
 }
-
+.video-background {
+    position: fixed; 
+    right: 0; 
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto; 
+    z-index: -1000; /* 确保视频位于其他内容的后面 */
+    background-size: cover;
+  }
 .starting-button {
-  width: 10rem;
-  color: rgb(0, 0, 0);
-  background-color: rgba(255, 255, 255, 0.5);
+    width: 20rem;
+    border-radius: 15px;
+    background-color: #00000000; /* Green */
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 32px;
+    margin-top: 400%;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #4CAF50;
 }
-
 .starting-button:hover {
-  transform: scale(0.95);
+    transition-duration: 0.4s;
+    background-color: #4CAF50; /* Green */
 }

@@ -23,9 +23,16 @@ var app = initializeApp(firebaseConfig);
 // const auth = getAuth();
 let database = getDatabase(app);
 
-
+const Ref = ref(database, 'events');
 
 function Case() {
+    const [testSet] = useState([
+      {abc:{id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+      bcd:{id: 2, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+      aaa:{id: 3, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+      bbb:{id: 4, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+      ccc:{id: 5, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"}},
+  ])
     const [CaseSet, setCaseSet] = useState([
         {id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
         {id: 2, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.11.12"},
@@ -41,7 +48,7 @@ function Case() {
     const fetchData = async() => {
         let newCaseSet=[];
 
-        onValue(ref(database), (snapshot) => {
+        onValue(Ref, (snapshot) => {
             newCaseSet.length = 0; 
             snapshot.forEach((item) => {
               newCaseSet.push(item.val()); 
@@ -55,6 +62,15 @@ function Case() {
     useEffect(() => {
         console.log(CaseSet);
     }, [CaseSet])  
+/*
+    var transformedArray = [];
+    let dataObject = testSet[0];
+    for (var key in dataObject) {
+        if (dataObject.hasOwnProperty(key)) {
+          transformedArray.push(dataObject[key]);
+        }
+      }
+*/
   //getData();
   //console.log(dataStorage);    
   let location = useLocation();
@@ -75,6 +91,8 @@ function Case() {
             <div>Category: {foundData.category}</div>
             <br></br>
             <div>CarNumber: {foundData.carNumber}</div>
+
+            
             
         </div>
       )

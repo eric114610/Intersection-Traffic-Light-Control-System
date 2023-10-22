@@ -19,16 +19,18 @@ var app = initializeApp(firebaseConfig);
 // const auth = getAuth();
 let database = getDatabase(app);
 
+const Ref = ref(database, 'events');
+
 
 function Func1page() {
     //getData();
     //console.log(dataStorage);
     const [testSet] = useState([
-        {abc:{id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"}},
-        {abc:{id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"}},
-        {abc:{id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"}},
-        {abc:{id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"}},
-        {abc:{id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"}},
+        {abc:{id: 1, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+        bcd:{id: 2, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+        aaa:{id: 3, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+        bbb:{id: 4, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"},
+        ccc:{id: 5, carNumber: "NBX-3388", category: "speeding", time:"2023-10-18-23.10.12"}},
     ])
 
     const [CaseSet, setCaseSet] = useState([
@@ -46,7 +48,7 @@ function Func1page() {
     const fetchData = async() => {
         let newCaseSet=[];
 
-        onValue(ref(database), (snapshot) => {
+        onValue(Ref, (snapshot) => {
             newCaseSet.length = 0; 
             snapshot.forEach((item) => {
               newCaseSet.push(item.val()); 
@@ -61,18 +63,20 @@ function Func1page() {
         console.log(CaseSet);
     }, [CaseSet])
 
-    var transformedDataArray = testSet.map(function(data) {
-        for (var key in data) {
-          if (data.hasOwnProperty(key)) {
-            return data[key]; // 保留内部属性
-          }
+    /*
+    var transformedArray = [];
+    let dataObject = CaseSet[0];
+    for (var key in dataObject) {
+        if (dataObject.hasOwnProperty(key)) {
+          transformedArray.push(dataObject[key]);
         }
-    });
+      }
+
     //console.log(testSet);
-    //console.log(transformedDataArray);
+    console.log(transformedArray);
 
     //const reversed_CaseSet = CaseSet.reverse();
-    
+    */
     return (
 
         <div className='func1Page'>

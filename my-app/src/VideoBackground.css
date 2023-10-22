@@ -1,0 +1,22 @@
+.video-background {
+    position: fixed; /* 使用 fixed 位置可以让背景视频在滚动时保持在视口中 */
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100; /* 通过 z-index 确保视频在其他内容之下 */
+    background-size: cover; /* 使用 cover 确保背景视频覆盖整个元素 */
+    overflow: hidden;
+  }
+  video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 定位视频到容器的中心 */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+  }
