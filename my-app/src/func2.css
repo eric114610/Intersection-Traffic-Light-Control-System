@@ -18,11 +18,39 @@
     height: 10vh;
 }
 
-.content{
-    font-size: 24px;
-}
 
-.situation{
-    font-size: 24px;
+table {
+    border-collapse: separate;
+    width: 100%;
+}
+  
+th, td {
+    border: 1px solid black;
+    padding: 8px;
     text-align: center;
 }
+
+
+thead {
+
+}
+
+  
+tr:nth-child(even) {
+    background-color: white;
+}
+  
+tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+th.centered {
+    text-align: center; /* 水平居中 */
+    vertical-align: middle; /* 垂直居中 */
+  }
+
+tr.headrow {
+    background-color: lightgray;
+    border-bottom: 5px solid #bbbbbb; /* 添加底部边框线 */
+}
+  

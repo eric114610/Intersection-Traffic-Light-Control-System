@@ -91,6 +91,8 @@ function Case() {
             <div>Category: {foundData.category}</div>
             <br></br>
             <div>CarNumber: {foundData.carNumber}</div>
+
+            
             
         </div>
       )

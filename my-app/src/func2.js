@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import './func2.css'
 
+
 import {initializeApp} from 'firebase/app';
 // import {signInWithEmailAndPassword, createUsesrWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider, signOut} from "firebase/auth";
 import { getDatabase, ref, push, child, onValue, val, get, set } from "firebase/database";
@@ -78,15 +79,24 @@ function Func2page(){
     return(
         <div className='func2Page'>
           <div className='title'><h1>紅燈秒數調整</h1></div>
-          <ul>
-            {StatusSet.map(item => (
-                <li key={item.id}>
-                <div>ID: {item.id}</div>
-                <div>Time: {item.time}</div>
-                <div>Situation: {item.situation}</div>
-                </li>
-            ))}
-          </ul>
+            <table>
+                <thead>
+                    <tr className='headrow'>
+                        <th className='centered'>ID</th>
+                        <th className='centered'>Time</th>
+                        <th className='centered'>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {StatusSet.map(item => (
+                    <tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.time}</td>
+                        <td>{item.situation}</td>
+                    </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 
