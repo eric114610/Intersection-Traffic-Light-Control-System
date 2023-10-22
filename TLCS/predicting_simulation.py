@@ -47,7 +47,7 @@ class Simulation:
         """
         Runs the testing simulation
         """
-        print(car_queue.N_Straight._car, car_queue.S_Straight._car, car_queue.W_Straight._car, car_queue.E_Straight._car, car_queue.N_Turn._car, car_queue.S_Turn._car, car_queue.W_Turn._car, car_queue.E_Turn._car)
+        #print(car_queue.N_Straight._car, car_queue.S_Straight._car, car_queue.W_Straight._car, car_queue.E_Straight._car, car_queue.N_Turn._car, car_queue.S_Turn._car, car_queue.W_Turn._car, car_queue.E_Turn._car)
 
         if self._step < self._max_steps:
             if self._steps_left > 0:

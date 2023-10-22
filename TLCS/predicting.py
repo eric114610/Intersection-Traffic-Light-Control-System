@@ -103,7 +103,7 @@ if __name__ == "__main__":
         print("1 step")
         end_time = time.perf_counter()
         elapsed_time = end_time - start_time
-        print(elapsed_time)
+        #print(elapsed_time)
         if not first:
             time.sleep(max(1-elapsed_time, 0))
         
