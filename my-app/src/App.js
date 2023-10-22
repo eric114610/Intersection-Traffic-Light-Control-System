@@ -7,8 +7,6 @@ import Func1page from './func1';
 import Case from './case.js'
 import Func2page from './func2';
 
-
-
 function App() {
   return (
     <Router>

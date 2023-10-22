@@ -2,7 +2,7 @@
 
 
 .background {
-    background-image: url('../images/background.jpg');
+    background-image: url('../public/p2.jpg');
     background-size: cover;
     background-position: center;
     background-color: rgba(0, 0, 0, 0.5);
@@ -12,23 +12,75 @@
     top: 0;
     left: 0;
     z-index: -1;
+    border:30px solid black;
+
 }
 
 
-.square-button {
-    width: 150px; /* 按钮的宽度 */
-    height: 150px; /* 按钮的高度 */
-    color: rgb(0, 0, 0);
-    background-color: rgba(255, 255, 255);
-    font-size: 16px; /* 按钮文本的字体大小 */
-    text-align: center; /* 文本居中 */
-    line-height: 150px; /* 文本垂直居中 */
-    text-decoration: none;
+.image-button {
+    width: 510px; /* 图片宽度加上边框的预留空间 */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
-}
-
-.square-button:hover {
-    background-color: rgba(169, 169, 169);
-    color: #ffffff; /* 鼠标悬停时的文本颜色 */
+    line-height: 40px; /* 根据您的布局需要进行调整 */
+    color: #000;
+    background-color: transparent;
+    position: relative;
+    border: none; /* 移除默认边框 */
+    padding: 0; /* 移除边距 */
+    transition: all .3s linear;
+  }
+  
+  .image-button > img {
+    position: relative;
+    z-index: 1;
+    width: 400px;
+    height: auto;
+  }
+  
+  .image-button::before,
+  .image-button::after {
+    content: "";
+    width: 20%;
+    height: 20%;
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    transition: all .5s ;
+  }
+  
+  .image-button::before {
+    border-top: 10px solid #000;
+    border-left: 10px solid #000;
+    top: 0;
+    left: 0;
+  }
+  
+  .image-button::after {
+    border-bottom: 10px solid #000;
+    border-right: 10px solid #000;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .image-button:hover::before,
+  .image-button:hover::after {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .text-box {
+    font-weight: bold; /* 使文字变为粗体 */
+    font-family: 'Arial', sans-serif; /* 指定字体，您可以更改为您喜欢的字体 */
+    font-size: 50px; /* 设置字体大小 */
+    text-align: center;
+    /* 下面的属性是可选的，仅用于额外的视觉效果 */
+    color: white; /* 设置文字颜色 */
+    padding: 10px; /* 设置内边距 */
+    border: none; /* 设置边框 */
+    width: 75%; /* 设置文本框宽度 */
+    margin: 0 auto; /* 居中文本框 */
+    background-color: rgba(0, 0, 0, 0.7);
   }
