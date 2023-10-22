@@ -90,10 +90,18 @@ function Func2page(){
         console.log(lightSet);
     }, [lightSet])
 
+    let light="NA";
+    if(lightSet[0]==0) light = "NS_Straight_Green";
+    if(lightSet[0]==1) light = "NS_Turn_Green";
+    if(lightSet[0]==2) light = "WE_Straight_Green";
+    if(lightSet[0]==3) light = "WE_Trun_Green";
+    if(lightSet[0]==4) light = "NS_Straight_Yellow";
+    if(lightSet[0]==5) light = "NS_Turn_Yellow";
+    if(lightSet[0]==6) light ="WE_Straight_Yellow";
+    if(lightSet[0]==7) light ="WE_Turn_Yellow";
 
-
-    let light = lightSet[0];
     console.log(light);
+
     
     
         
