@@ -45,6 +45,3 @@ The neural network is fully connected with 12 neurons as input (the state), 4 hi
 For training, experience replay is implemented, the experiences are stored at memory.
 For each episode, their will be 100 epochs, for each epoch, a small batch of 400 experiences will be fed to train the neural network.
 
-Referencr:
-https://github.com/AndreaVidali/Deep-QLearning-Agent-for-Traffic-Signal-Control
-https://www.mdpi.com/1424-8220/22/22/8732
