@@ -1,8 +1,7 @@
 # Intersection-Traffic-Light-Control-System
 Project for 2023 Meichu Hackathon NXP Team 2
 
-Aim to automaticly decide traffic signal using computer vision and Deep Q-learning with camera footage at the intersection.
-
+Aims to automaticly decide traffic signal using computer vision and Deep Q-learning with camera footage at the intersection.
 
 Run the file training_main.py to start training.
 Run simulation.py to start simulating.
